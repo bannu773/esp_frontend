@@ -7,7 +7,7 @@ const App = () => {
 
   // Setup WebSocket connection
   useEffect(() => {
-    const websocket = new WebSocket('ws://localhost:8080');
+    const websocket = new WebSocket('wss://esp-backend-49h3.onrender.com');
     
     websocket.onopen = () => {
       console.log('Connected to WebSocket server');
@@ -37,7 +37,7 @@ const App = () => {
     
     try {
       // Update the backend with the new light status
-      await axios.post('http://localhost:8080/update-status', { status: newStatus });
+      await axios.post('https://esp-backend-49h3.onrender.com/update-status', { status: newStatus });
       // Note: We don't need to setLightStatus here anymore as it will come through WebSocket
     } catch (err) {
       console.error('Error updating light status:', err);
